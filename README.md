@@ -20,15 +20,19 @@ The following advanced user stories are optional:
 * [X] Bonus 1: Validate that the form values contain only whitelisted characters.
 * [X] Bonus 2: Validate the uniqueness of the username.
 
-<!-- ## Video Walkthrough
+## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' /> 
+<img src='http://i.imgur.com/t9WF7cl.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' /> 
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
-## Notes
+This demo registers John Doe, Jane Doe, and Bobby O'Reilly-Smith, resulting in the following users table:
+
+<img src='http://i.imgur.com/VTivD3l.png' title='Users Table' width='' alt='Users Table' />
+
+<!-- ## Notes
 
 Describe any challenges encountered while building the app. -->
 
