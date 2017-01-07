@@ -78,10 +78,10 @@
     
     <form action="" method="post">
         
-        <p><b>First Name: </b><input type="text" name="first_name" value="<?php echo $first_name; ?>"></p>
-        <p><b>Last Name: </b><input type="text" name="last_name" value="<?php echo $last_name; ?>"></p>
-        <p><b>Email: </b><input type="text" name="email" value="<?php echo $email; ?>"></p>
-        <p><b>Username: </b><input type="text" name="username" value="<?php echo $username; ?>"></p>
+        <p><b>First Name: </b><input type="text" name="first_name" value="<?php echo h($first_name); ?>"></p>
+        <p><b>Last Name: </b><input type="text" name="last_name" value="<?php echo h($last_name); ?>"></p>
+        <p><b>Email: </b><input type="text" name="email" value="<?php echo h($email); ?>"></p>
+        <p><b>Username: </b><input type="text" name="username" value="<?php echo h($username); ?>"></p>
         <p><input type="submit" value="Submit Registration"></p>
     </form>
 
