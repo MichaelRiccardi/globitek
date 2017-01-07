@@ -33,10 +33,20 @@
         
     }
 
+    function has_valid_name_format($name)
+    {
+        return preg_match('/\A[A-Za-z\s\-,\.\']+\Z/', $name);
+    }
+
     // has_valid_email_format('test@test.com')
-    function has_valid_email_format($value) {
-        // TODO
-        return (strpos($value, "@") !== false);
+    function has_valid_email_format($email) {
+        // DONE
+        return preg_match('/\A[A-Za-z0-9\_\.]+@[A-Za-z0-9\.]+\.[A-Za-z0-9\.]{2,}\Z/', $email);
+    }
+
+    function has_valid_username_format($username)
+    {
+        return preg_match('/\A[A-Za-z0-9\_]+\Z/', $username);
     }
 
     function validate_first_name($first_name, &$errors)
@@ -51,6 +61,10 @@
         {
             $errors[] = "First name must be between {$name_length['min']} and {$name_length['max']} characters.";
         }
+        else if(!has_valid_name_format($first_name))
+        {
+            $errors[] = "First name may only contain letters, spaces, and the following symbols: hyphen, comma, period, and apostrophe.";
+        }
     }
 
     function validate_last_name($last_name, &$errors)
@@ -64,6 +78,10 @@
         else if(!has_length($last_name, $name_length))
         {
             $errors[] = "Last name must be between {$name_length['min']} and {$name_length['max']} characters.";
+        }
+        else if(!has_valid_name_format($last_name))
+        {
+            $errors[] = "Last name may only contain letters, spaces, and the following symbols: hyphen, comma, period, and apostrophe.";
         }
     }
 
@@ -97,6 +115,10 @@
         {
             $errors[] = "Username must be between {$username_length['min']} and {$username_length['max']} characters.";
         }           
+        else if(!has_valid_username_format($username))
+        {
+            $errors[] = "Username may only contain letters, spaces, and underscores.";
+        }
     }
 
 ?>
