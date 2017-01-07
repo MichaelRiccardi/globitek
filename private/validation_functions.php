@@ -49,6 +49,13 @@
         return preg_match('/\A[A-Za-z0-9\_]+\Z/', $username);
     }
 
+    function has_unique_username($username, $db)
+    {
+        $sql = "SELECT * FROM users WHERE username='" . db_escape($db, $username) . "'";
+        $result_set = db_query($db, $sql);
+        return (db_num_rows($result_set) == 0);
+    }
+
     function validate_first_name($first_name, &$errors)
     {    
         global $name_length;
@@ -103,7 +110,7 @@
         }
     }
 
-    function validate_username($username, &$errors)
+    function validate_username($username, &$errors, $db)
     {
         global $username_length;
         
@@ -118,6 +125,10 @@
         else if(!has_valid_username_format($username))
         {
             $errors[] = "Username may only contain letters, spaces, and underscores.";
+        }
+        else if(!has_unique_username($username, $db))
+        {
+            $errors[] = "The username you requested is already in use.";
         }
     }
 

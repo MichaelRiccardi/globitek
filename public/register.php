@@ -20,17 +20,17 @@
         $username = isset($_POST['username']) ? $_POST['username'] : "";
         $created_at = date("Y-m-d H:i:s");
         
+        $db = db_connect();
+        
         // Perform Validations        
         validate_first_name($first_name, $errors);
         validate_last_name($last_name, $errors);
         validate_email($email, $errors);
-        validate_username($username, $errors);
+        validate_username($username, $errors, $db);
 
         // if there were no errors, submit data to database
         if(empty($errors)) 
         {
-            $db = db_connect();
-            
             // Write SQL INSERT statement
             $sql = "INSERT INTO users (first_name, last_name, email, username, created_at)
             VALUES ('" . db_escape($db, $first_name) . "', '"
@@ -55,7 +55,8 @@
                db_close($db);
                exit;
              }
-        }       
+        }
+        
     }
 
 ?>
